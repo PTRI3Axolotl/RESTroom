@@ -1,7 +1,8 @@
 // login form
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Box, TextField } from "@material-ui/core";
+//import fetch from 'fetch';
 
 const useStyles = makeStyles({
   button: {
@@ -45,8 +46,23 @@ export default function LoginForm() {
   
 
   function clickHandler(e){
-    console.log(`Username is ${username} and Password is ${password}`);
-    e.preventDefault();
+    // console.log(`Username is ${username} and Password is ${password}`);
+    // e.preventDefault();
+    
+    //fetch that ish
+    // fetch to endpoint /userlogin with username and password keys
+    fetch('/api/userlogin',
+      {
+          headers: {
+            // 'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: 'POST',
+          body: JSON.stringify({username, password })
+      })
+    .then(data => data.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
   }
 
   const validateForm = function() {
@@ -57,7 +73,6 @@ export default function LoginForm() {
     <div className={classes.div}>
     <h1>Login:</h1>
     <Box className={classes.box}>
-      
         <TextField placeholder="username" onChange={(e) => setUsername(e.target.value)} />
         <br></br>
         <TextField placeholder="password" onChange={(e) => setPassword(e.target.value)} /> 
