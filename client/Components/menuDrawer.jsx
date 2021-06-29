@@ -15,6 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Link from '@material-ui/core/Link';
 import { ExitToApp, FormatPaint, DirectionsRun } from '@material-ui/icons';
 
 const drawerWidth = 240;
@@ -93,6 +94,12 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const redirectToPottyTime = () =>{
+    
+      <Redirect to="./user.html" />
+  
+  }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -134,7 +141,7 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List>
           {['Potty Time', 'gARffiti'].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} component={Link} to="/user">
               <ListItemIcon>{text === "Potty Time"? <DirectionsRun />:<FormatPaint />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -143,7 +150,7 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List>
           {['Log Out'].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} onClick={redirectToPottyTime}>
               <ListItemIcon>{<ExitToApp />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
