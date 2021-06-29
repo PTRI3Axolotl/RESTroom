@@ -94,11 +94,6 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
-  const redirectToPottyTime = () =>{
-    
-      <Redirect to="./user.html" />
-  
-  }
 
   return (
     <div className={classes.root}>
@@ -150,7 +145,7 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List>
           {['Log Out'].map((text, index) => (
-            <ListItem button key={text} onClick={redirectToPottyTime}>
+            <ListItem button key={text}>
               <ListItemIcon>{<ExitToApp />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
