@@ -8,8 +8,10 @@ import ToiletMarker from './toiletMarker.jsx';
 
 // toilet dependency injection goes here:
 
-import testToiletSet from './testToiletSet.js';
+// import testToiletSet from './testToiletSet.js';
 
+// pretty print functionality to be used when "console.log"ing objects.
+// EXAMPLE: console.log(pp(props));
 const pp = function(stuff) {
   return JSON.stringify(stuff,null,2)
 }
@@ -68,7 +70,7 @@ export default function UserMap() {
       return null;
     }
 
-  const getNewBathrooms = function(latlngObj, miles=10) {
+  const getNewBathrooms = function(latlngObj, miles=10000) {
     const {lat, lng} = latlngObj;
     // console.log(`getNewBathrooms parameter latlngArr is ${JSON.stringify(latlngObj)}`)
     // console.log(`lat: ${lat}, lng: ${lng}`)
@@ -110,20 +112,7 @@ export default function UserMap() {
           // toiletAddress2,
         }) 
       });
-      // console.log(`newBathrooms are ${JSON.stringify(newBathrooms, null, 2)}, prototype of newBathrooms ${newBathrooms.prototype}`)
       setToilets(() => [...newBathrooms]);
-      // console.log(`toilets are: ${pp(toilets)}`)
-    //   console.log(`newBathrooms: ${JSON.stringify(newBathrooms,null,2)}`)
-    //   setToiletMarkers((prevState) => {
-    //   console.log(`about to create a bunch of toiletMarkers`)
-    //   const tempMarkers = new Set();
-    //   for (const bathroom of newBathrooms) {
-    //     const newComp = (<ToiletMarker bathroom={bathroom} key={bathroom.bathroomId} />);
-    //     tempMarkers.add(newComp)
-    //     console.log(`Added newComp to tempMarkers set. newComp is ${pp(newComp)} Now tempMarkers is ${pp(tempMarkers)}`)
-    // } 
-    // console.log(`tempMarkers are ${pp(tempMarkers)} and toiletMarkers are ${pp(Object.keys(toiletMarkers))}`)
-    // return (prevState.add(tempMarkers))
     })
     .catch(err => console.log(err))
   }
@@ -136,7 +125,6 @@ return (
   />
   <UserMarker position={coords} />
   <MapDrag />
-  {/* {toiletMarkers} */}
   {toilets.map(elem => <ToiletMarker bathroom={elem} key={elem.bathroomId} />)}
 
 </MapContainer>

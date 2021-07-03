@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Marker, Popup, useMap } from 'react-leaflet';
-import TempToiletCard from './tempToiletCard.jsx';
+// import TempToiletCard from './tempToiletCard.jsx';
+import UserToiletCard from './userToiletCard';
 
 const L = window.L;
 
@@ -25,7 +26,7 @@ export default function ToiletMarker(props) {
   return (
     <Marker icon={iconToilet} position={coords}>
       <Popup>
-        <TempToiletCard bathroom={props.bathroom} />
+        <UserToiletCard bathroom={props.bathroom} />
       </Popup>
     </Marker>
   )
